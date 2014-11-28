@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turnkey Channel Content</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="tkc">
+    <div class="container-content" ng-controller="TemplateController">
+
+      <!-- The blue background with the big cloud arranged to the left -->
+      <div class="header-background"></div>
+
+      <div class="main-content">
+        <!-- The content header is composed by the logo image and the
+             current logged in user.-->
+        <div class="content-header">
+          <img class="logo" src="css/images/logo.png" />
+          <div class="info">
+            <table>
+              <tr>
+                <td class="user-info">
+                  <span>{{vendor.name}}</span>
+                  <span>Vendor</span>
+                </td>
+                <td class="avatar">
+                  <img src="css/images/avatar.png" >
+                  <!-- <img class="vendor-avatar" src="css/images/wawandco.png" > -->
+                </td>
+                <td><img src="css/images/more.png" ></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <button type="button" class="btn btn-success" ng-click="editMode = false">Save Changes</button>
+          <button type="button" class="btn btn-primary edit" ng-show="!editMode" ng-click="editMode = true">Edit Theme</button>
+          <button type="button" class="btn btn-primary preview" ng-show="editMode">Preview</button>
+        </div>
+
+        <div class="vendor-content">
+
+          <div class="vendor-general-info" ng-class="{'editable': editMode}">
+            <editable on-edit="showGeneralInfoForm()"></editable>
+
+            <div class="vendor-content-header">
+              <img src="css/images/no-logo.png">
+              <!-- <img class="logo" src="css/images/wawandco.png"> -->
+              <span class="vendor-name">{{vendor.name}}</span>
+            </div>
+
+            <div class="vendor-location">
+              <table width="345px" align="center">
+                <tr><td class="marker">
+                  <img src="css/images/marker.png">
+                </td></tr>
+                <tr><td class="description">
+                  <span>{{vendor.location}}</span>
+                </td></tr>
+              </table>
+            </div>
+
+            <div class="vendor-about">
+              <p>{{vendor.description}}</p>
+            </div>
+          </div>
+
+          <div class="vendor-products">
+            <span class="title">Products / Services <a href="#" ng-click="addProductForm()">Add Another Product</a></span>
+
+            <div class="left" ng-repeat="product in vendor.products" ng-class="{'editable': editMode, 'clear-border-right':$odd}">
+              <editable on-edit="showEditProductForm($index)"></editable>
+              <span class="name">{{product.name}}</span>
+              <p class="description">{{product.description}}</p>
+              <a href="#">View more</a>
+            </div>
+
+            <div class="clear">&nbsp;</div>
+          </div>
+
+          <div class="vendor-benefits" ng-class="{'editable': editMode}">
+            <editable on-edit="showEditBenefitForm()"></editable>
+            <span class="title">Main Benefits</span>
+
+            <div class="left">
+              <img src="css/images/no-benefits.png">
+              <!-- TODO: if there is a benefits picture available then show it -->
+              <!-- <img class="img" src="css/images/nature.jpeg"> -->
+            </div>
+
+            <div class="right">
+              <table>
+                <tr>
+                  <td class="benefit"><img src="css/images/one.png"></td>
+                  <td>
+                    <span class="name">{{vendor.benefits[0].title}}</span>
+                    <p class="description bottom-45-space">{{vendor.benefits[0].description}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="benefit"><img src="css/images/two.png"></td>
+                  <td>
+                    <span class="name">{{vendor.benefits[1].title}}</span>
+                    <p class="description bottom-45-space">{{vendor.benefits[1].description}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="benefit"><img src="css/images/three.png"></td>
+                  <td>
+                    <span class="name">{{vendor.benefits[2].title}}</span>
+                    <p class="description bottom-45-space">{{vendor.benefits[2].description}}</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="clear">&nbsp;</div>
+          </div>
+
+          <div class="vendor-why" ng-class="{'editable': editMode}">
+            <editable on-edit="showEditWhyForm()"></editable>
+            <div class="left">
+              <span class="title">Why Use {{vendor.name}}?</span>
+              <p class="description" style="padding-top: 21px">{{vendor.whyUse}}</p>
+            </div>
+            <img class="img" src="css/images/no-why.png">
+            <!-- <img class="img" src="css/images/nature.jpeg"> -->
+            <div class="clear"></div>
+          </div>
+
+          <div class="vendor-footer">
+            <a href="{{vendor.googleLink}}"   target="_blank"><img src="css/images/gplus.png"></a>
+            <a href="{{vendor.facebookPage}}" target="_blank"><img src="css/images/facebook.png"></a>
+            <a href="{{vendor.twitterLink}}"  target="_blank"><img src="css/images/twitter.png" style="margin:0"></a>
+          </div>
+
+        </div>
+      </div>
+      <ng-include src="'templates/edit_main_info_form.html'"></ng-include>
+      <ng-include src="'templates/edit_products_form.html'"></ng-include>
+      <ng-include src="'templates/edit_benefits_form.html'"></ng-include>
+      <ng-include src="'templates/edit_why_use_form.html'"></ng-include>
+    </div>
+  </body>
+</html>
