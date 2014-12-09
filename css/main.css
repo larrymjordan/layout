@@ -37,8 +37,13 @@ body {
   text-align: justify;
 }
 
-.bottom-45-space{
+.bottom-45-space {
   margin-bottom: 45px
+}
+
+/* ADDED */
+.top-24-space {
+  margin-top: 24px;
 }
 
 .edit {
@@ -439,4 +444,90 @@ td.bottom-space {
 
 button.left {
   float:left
+}
+
+/* ALL PRODUCT STYLES*/
+
+.product-info {
+  padding-top: 36px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
+.product-info .product-name {
+  color: #295979;
+  font-size: 28px;
+  display: block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E5E5E5;
+  line-height: 33px;
+  margin-bottom: 26px;
+}
+
+.product-img {
+  width: 383px;
+  float: left;
+}
+
+.product-price {
+  line-height: 18px;
+  float: right;
+  color: #235A8A;
+  font-size: 16px;
+  margin-top: 14px;
+}
+
+.product-price-value {
+  color: #218ED9
+}
+
+.product-description {
+  float: right;
+  color: #295979;
+  width: 491px;
+  font-size: 15px;
+  text-align: justify;
+  line-height: 24px;
+}
+
+.product-features {
+  margin-top: 34px;
+}
+
+.product-feature-title {
+  font-size: 26px;
+  color: #218ED9;
+  display: block;
+  line-height: 30px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.product-feature-box {
+  width: 285px;
+  height: 167px;
+  float: left;
+  overflow: scroll;
+  margin-right: 14px;
+  margin-top: 29px;
+  background-color: #F6F6F6;
+  padding-left: 17px;
+  padding-top: 20px;
+  padding-bottom: 17px;
+  padding-right: 17px;
+  border-top: 5px solid #295979;
+}
+
+.product-feature-box .title {
+  display: block;
+  font-size: 16px;
+  color: #295979;
+  border: none;
+}
+
+.product-feature-box .text {
+  font-size: 13px;
+  color: #295979;
+  line-height: 21px
 }

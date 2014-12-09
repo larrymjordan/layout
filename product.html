@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turnkey Channel Content</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="tkc">
+    <div class="container-content" ng-controller="TemplateController">
+
+      <!-- The blue background with the big cloud arranged to the left -->
+      <div class="header-background"></div>
+
+      <div class="main-content">
+        <!-- The content header is composed by the logo image and the
+             current logged in user.-->
+        <div class="content-header">
+          <img class="logo" src="css/images/logo.png" />
+          <div class="info">
+            <table>
+              <tr>
+                <td class="user-info">
+                  <span>{{vendor.name}}</span>
+                  <span>Vendor</span>
+                </td>
+                <td class="avatar">
+                  <img src="css/images/avatar.png" >
+                  <!-- <img class="vendor-avatar" src="css/images/wawandco.png" > -->
+                </td>
+                <td><img src="css/images/more.png" ></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="vendor-content">
+
+          <div class="vendor-general-info top-24-space" style="height:auto">
+            <div class="vendor-content-header">
+              <img src="css/images/no-logo.png">
+              <!-- <img class="logo" src="css/images/wawandco.png"> -->
+              <span class="vendor-name">{{vendor.name}}</span>
+            </div>
+
+            <div class="product-info">
+
+              <div>
+                <span class="product-name">UX/UI Design</span>
+                <div class="product-img">
+                  <img src="css/images/p_img.png" alt="Source Image">
+                  <span class="product-price"> Price: <span class="product-price-value">$200 Hourly</span> </span>
+                </div>
+                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br/><br/>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="clear"></div>
+              </div>
+
+              <div class="product-features">
+                <span class="product-feature-title">Features</span>
+                <div class="product-feature-box">
+                  <span class="title">Lorem Ipsum</span>
+                  <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  labore et dolore magna aliqua.
+                  </p>
+                </div>
+
+                <div class="product-feature-box">
+                  <span class="title">Lorem Ipsum</span>
+                  <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  labore et dolore magna aliqua.
+                  </p>
+                </div>
+
+                <div class="product-feature-box">
+                  <span class="title">Lorem Ipsum</span>
+                  <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  labore et dolore magna aliqua.
+                  </p>
+                </div>
+
+                <div class="product-feature-box">
+                  <span class="title">Lorem Ipsum</span>
+                  <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  labore et dolore magna aliqua.
+                  </p>
+                </div>
+                <div class="clear"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="vendor-products">
+            <span class="title">More Products by Wawandco Team</span>
+
+            <div class="left" ng-repeat="product in vendor.products" ng-class="{'editable': editMode, 'clear-border-right':$odd}">
+              <editable on-edit="showEditProductForm($index)"></editable>
+              <span class="name">{{product.name}}</span>
+              <p class="description">{{product.description}}</p>
+              <a href="#">View more</a>
+            </div>
+
+            <div class="clear">&nbsp;</div>
+          </div>
+
+          <div class="vendor-footer">
+            <a href="{{vendor.googleLink}}"   target="_blank"><img src="css/images/gplus.png"></a>
+            <a href="{{vendor.facebookPage}}" target="_blank"><img src="css/images/facebook.png"></a>
+            <a href="{{vendor.twitterLink}}"  target="_blank"><img src="css/images/twitter.png" style="margin:0"></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
